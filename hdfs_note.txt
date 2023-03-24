@@ -1,0 +1,26 @@
+* The hdfs localhost move from http://localhost:50070 to http://localhost:9870
+# Force to remove folder in hadoop
+>> hadoop fs -rm -r '/FolderName'
+
+# To Compile a project (as WordCount for example)
+1. Generate a folder remotedly to hdfs server
+>> hadoop fs -mkdir '/FolderName'
+
+2. Put file remotedly to hdfs server
+>> hadoop fs -put '/FileName' '/FolderOfHadoop'
+
+3. Compile to java classes locally
+>> javac -classpath $(hadoop classpath) -d 'ClassesFolder'   'WordCount.java'
+#					  folder of classes    java file
+
+4. Recompile into JAR file via classes
+>> jar -cvf WordCount.jar  -C  ClassesFolder/ .
+#             jar file         folder of classes
+
+5. Conduct hdfs operation via JAR file to extract output
+>> hadoop jar 'WordCount.jar'     WordCount       '/Input'    '/Output'
+#	         jar file        MainClassName   hdfs Input  hdfs Output
+
+6. Review output of hdfs
+>> hdfs dfs -cat /Output/*
+#		hdfs output	
