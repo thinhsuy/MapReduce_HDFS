@@ -12,7 +12,7 @@ import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 public class PatentRecords {
-  //									 >>change this for another type of value class output
+
   public static class TokenizerMapper extends Mapper<Object, Text, Text, IntWritable>{
 
     public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
@@ -23,11 +23,12 @@ public class PatentRecords {
       context.write(new Text(ids), new IntWritable(1));
     }
   }
-  //									    >> change this for another type of value class output
+
   public static class TokenReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
 
     public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
       int sum = 0;
+      // sum all the associated subpatent in each key patent
       for (IntWritable val: values){
          sum+=val.get();
       }

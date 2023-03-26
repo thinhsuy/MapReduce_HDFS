@@ -79,6 +79,7 @@ public class IdentifyHealCare {
       Collections.addAll(listEncryptCol, encryptCol);
       String encryptedString = "";
       for (int index=0; index<harsh.length; index++){
+          // encode index was defined as encryptable
           if (listEncryptCol.contains(index)){
               encryptedString += Ceasar_encrypt(harsh[index].toString(), keyEncrypt);
           } else {
@@ -94,6 +95,7 @@ public class IdentifyHealCare {
   public static class TokenReducer extends Reducer<Text, Text, Text, Text> {
 
     public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
+      // write all each values
       for (Text val : values){
          context.write(key, new Text(val.toString()));
       }

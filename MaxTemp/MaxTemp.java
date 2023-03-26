@@ -13,23 +13,24 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 
 public class MaxTemp {
-  //									 >>change this for another type of value class output
+
   public static class TokenizerMapper extends Mapper<Object, Text, Text, IntWritable>{
 
     public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
       //split current line into list of values by removing consecutive spaces
       String[] harsh = (value.toString()).split("\\s+");
-      String year = harsh[0].toString();
-      int temp = Integer.parseInt(harsh[1]);
-      //assign for each ids in data as value of 1
+      String year = harsh[0].toString(); //get year
+      int temp = Integer.parseInt(harsh[1]); //get temp
+      //assign for each yaer with every value
       context.write(new Text(year), new IntWritable(temp));
     }
   }
-  //									    >> change this for another type of value class output
+
   public static class TokenReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
 
     public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
       int max = 0;
+      //compare every temp in each key (year) to get out max value
       for (IntWritable val: values){
         if (val.get()>=max){
           max=val.get();

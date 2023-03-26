@@ -27,10 +27,10 @@ public class WeatherProgram {
 
       //check value at index 5 and 6, which present for max and min temperature, with the limitation and get conclusion
       if (getValueAt(harsh, 5)>=40.0){
-	context.write(new Text(date), new Text("Cold day"));
+	context.write(new Text(date), new Text("Hot day"));
       }
       if (getValueAt(harsh, 6)<=10){
-        context.write(new Text(date), new Text("Hot day"));
+        context.write(new Text(date), new Text("Cold day"));
       }
     }
   }

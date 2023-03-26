@@ -14,7 +14,7 @@ By dividing petabytes of data into smaller chunks and processing them in paralle
 
 ![download](https://user-images.githubusercontent.com/81562297/227574049-cb044bbe-77df-47eb-861c-2c6c09eddcc3.png)
 
-# Opertion
+# Operation
 - First of all, it is important for setting Hadoop Classpath and Hadoop Home for system, remember to check the path after assigning.
 ```
 >> export HADOOP_CLASSPATH=$(hadoop classpath)
