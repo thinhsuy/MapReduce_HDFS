@@ -15,25 +15,25 @@ By dividing petabytes of data into smaller chunks and processing them in paralle
 ![download](https://user-images.githubusercontent.com/81562297/227574049-cb044bbe-77df-47eb-861c-2c6c09eddcc3.png)
 
 # Operation
-- First of all, it is important for setting Hadoop Classpath and Hadoop Home for system, remember to check the path after assigning.
+- First and foremost, it is crucial to configure Hadoop Classpath and Hadoop Home for the system. After assigning, always check the path.
 ```
 >> export HADOOP_CLASSPATH=$(hadoop classpath)
 >> echo $HADOOP_CLASSPATH
 ```
-- Second, let's generate the principal folder and its input by hadoop remoting commands for each solution that you want to approach
+- Second, for each solution you want to use, let's build the principal folder and its input using hadoop remote commands.
 ```
 >> hadoop fs -mkdir /WordCount
 >> hadoop fs -mkdir /WordCount/Input
 ```
-- Next, `-put` the `input.txt` in folder `input_data` into hadoop server, in case of multiple input files found just work the same way:
+- Next, `-put` the `input.txt` file into the `input_data` folder on the Hadoop server. If additional input files are discovered, simply follow these steps:
 ```
 >> hadoop fs -put '/input_data/input.txt' '/WordCount/Input'
 ```
-- Reviewing the .java file before compling it into muti-classes files:
+- Before combining the.java file into multiple classes files, it should be reviewed:
 ```
 >> javac -classpath $(hadoop classpath) -d 'java_classes' 'WordCount.java'
 ```
-- By extracted multi-classes files, continue on compiling it into .jar
+- Continue putting the extracted multi-classes files into compilation .jar
 ```
 >> jar -cvf WordCount.jar -C java_classes/ .
 ```
@@ -41,12 +41,12 @@ By dividing petabytes of data into smaller chunks and processing them in paralle
 ```
 >> hadoop jar 'WordCount.jar' WordCount '/WordCount/Input' '/WordCount/Output'
 ```
-- From here, the process of MapReduce already finished on operating program on Cluster, whose result could be reviewed by:
+- From here, the running program on the cluster's MapReduce process has already finished, and the results can be examined by:
 ```
 >> hdfs dfs -cat /WordCount/Output/*
 ```
 
-References:
+# References
 https://www.java.com/en/
 https://www.oracle.com/
 https://onlineitguru.com/blogger/explain-hadoop-architecture-and-its-main-components
