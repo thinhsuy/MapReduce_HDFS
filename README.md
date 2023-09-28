@@ -1,4 +1,4 @@
-# MapReduce with Hadoop distributed-file System
+# MapReduce with Hadoop distributed-file System (HDFS)
 ## Introduction
 - On standard hardware, the distributed file system HDFS manages enormous data sets. A single Apache Hadoop cluster can be scaled up to hundreds or even thousands of nodes using this technique. One of Apache Hadoop's key parts, along with MapReduce and YARN, is HDFS.
 - Accessing large amounts of data housed in the Hadoop File System requires the usage of the MapReduce programming paradigm or pattern. (HDFS). It is essential to the operation of the Hadoop framework and a core component.
